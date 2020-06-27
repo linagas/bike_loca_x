@@ -1,8 +1,10 @@
-import 'package:bike_loca_x/components/login_page.dart';
+import 'package:bike_loca_x/services/sign_in.dart';
 import 'package:flutter/material.dart';
 import './home.dart';
 
 class WelcomePage extends StatelessWidget {
+  BuildContext context;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,8 +27,9 @@ class WelcomePage extends StatelessWidget {
                 ),
                 SizedBox(width: 25),
                 Row(
-                  children: <Widget>[
-                    Expanded(child: RaisedButton(
+                  children: <Widget>[ 
+                    _signInButton(),   
+                    /* Expanded(child: RaisedButton(
                         child: Text('Sign in'),
                         onPressed: () {
                           Navigator.push(
@@ -34,8 +37,8 @@ class WelcomePage extends StatelessWidget {
                             MaterialPageRoute(builder: (context) => LoginPage()),
                           );
                         },
-                      ),
-                    ),
+                      ), 
+                    ), */
                     SizedBox(width: 25),
                     Expanded(child: RaisedButton(
                         child: Text('Sign up'),
@@ -53,6 +56,49 @@ class WelcomePage extends StatelessWidget {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+  
+  Widget _signInButton() {
+    return OutlineButton(
+      splashColor: Colors.grey,
+      onPressed: () {
+        signInWithGoogle().whenComplete(() {
+          Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomePage()),
+                  );
+                },
+            ),
+          );
+        });
+      },
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+      highlightElevation: 0,
+      borderSide: BorderSide(color: Colors.grey),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image(image: AssetImage("assets/images/google_logo.png"), height: 35.0),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Text(
+                'Sign in with Google',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.grey,
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );

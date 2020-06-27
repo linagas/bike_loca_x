@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "861495086198",
+    "firebase_url": "https://bikeloca-64194.firebaseio.com",
+    "project_id": "bikeloca-64194",
+    "storage_bucket": "bikeloca-64194.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861495086198:android:c145062f1212f90b5ae357",
+        "android_client_info": {
+          "package_name": "com.example.bike_loca_x"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861495086198-o9c0bji6rdc04vjcj1ah8j4k9pcfmtvg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxeUXj31oYjDP3mPTp4BUIZYc84Ee4OiI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861495086198-o9c0bji6rdc04vjcj1ah8j4k9pcfmtvg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
