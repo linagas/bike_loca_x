@@ -1,5 +1,5 @@
 name: bike_loca_x
-description: A new Flutter project.
+description: A new Bike project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -31,6 +31,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  firebase_auth: ^0.16.0
+  google_sign_in: ^4.4.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

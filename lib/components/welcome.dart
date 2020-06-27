@@ -1,5 +1,6 @@
+import 'package:bike_loca_x/components/login_page.dart';
 import 'package:flutter/material.dart';
-//import 'package:bikeloca/home.dart';
+import './home.dart';
 
 class WelcomePage extends StatelessWidget {
   @override
@@ -28,10 +29,10 @@ class WelcomePage extends StatelessWidget {
                     Expanded(child: RaisedButton(
                         child: Text('Sign in'),
                         onPressed: () {
-                          /* Navigator.push(
+                          Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => HomePage()),
-                          ); */
+                            MaterialPageRoute(builder: (context) => LoginPage()),
+                          );
                         },
                       ),
                     ),
@@ -39,10 +40,10 @@ class WelcomePage extends StatelessWidget {
                     Expanded(child: RaisedButton(
                         child: Text('Sign up'),
                         onPressed: () {
-                          /* Navigator.push(
+                          Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => HomePage()),
-                          ); */
+                          );
                         },
                       ),
                     )
