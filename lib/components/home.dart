@@ -3,8 +3,6 @@ import 'dart:async' show Completer;
 import 'package:flutter/material.dart';
 //import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-//import './drawer.dart';
-
 class HomePage extends StatefulWidget {
   @override
     _HomePageState createState() => _HomePageState();
