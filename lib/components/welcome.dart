@@ -1,4 +1,3 @@
-import 'package:bike_loca_x/components/login_page.dart';
 import 'package:flutter/material.dart';
 // Own
 import './home.dart';
@@ -64,7 +63,7 @@ class WelcomePage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => LoginPage()),
+                                builder: (context) => HomePage()),
                           );
                         },
                       ),

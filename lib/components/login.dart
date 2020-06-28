@@ -1,4 +1,3 @@
-  
 // Copyright 2019 The Flutter Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
@@ -8,16 +7,11 @@
 import 'dart:async';
 import 'dart:convert' show json;
 
-import 'package:bike_loca_x/components/home.dart';
-import 'package:bike_loca_x/components/welcome.dart';
 import "package:http/http.dart" as http;
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import './map-provider.dart';
 import './database.dart';
-
-
-
 
 GoogleSignIn _googleSignIn = GoogleSignIn(
   scopes: <String>[
@@ -49,10 +43,11 @@ class SignInState extends State<SignIn> {
     super.initState();
     _googleSignIn.onCurrentUserChanged.listen((GoogleSignInAccount account) {
       setState(() {
+        print(account);
         _currentUser = account;
       });
       if (_currentUser != null) {
-        _handleGetContact();
+        print(_currentUser);
       }
     });
     _googleSignIn.signInSilently();
@@ -111,7 +106,7 @@ class SignInState extends State<SignIn> {
       print(error);
     }
   }
-  
+
   Future<void> _handleSignOut() => _googleSignIn.disconnect();
 
   Widget _buildBody() {
@@ -167,7 +162,7 @@ class SignInState extends State<SignIn> {
                   ),
                   SizedBox(width: 25),
                   Row(
-                    children: <Widget>[ 
+                    children: <Widget>[
                       _signInButton(),
                       SizedBox(width: 25),
                       Expanded(
@@ -176,7 +171,8 @@ class SignInState extends State<SignIn> {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => MapProvider()),
+                              MaterialPageRoute(
+                                  builder: (context) => MapProvider()),
                             );
                           },
                         ),
@@ -184,33 +180,34 @@ class SignInState extends State<SignIn> {
                     ],
                   ),
                   Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: RaisedButton(
-                        child: Text('Data'),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => Database()),
-                          );
-                        },
+                    children: <Widget>[
+                      Expanded(
+                        child: RaisedButton(
+                          child: Text('Data'),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Database()),
+                            );
+                          },
+                        ),
                       ),
-                    ),
-                    SizedBox(width: 25),
-                    Expanded(
-                      child: RaisedButton(
-                        child: Text('Maps'),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => MapProvider()),
-                          );
-                        },
-                      ),
-                    )
-                  ],
-                ),
+                      SizedBox(width: 25),
+                      Expanded(
+                        child: RaisedButton(
+                          child: Text('Maps'),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MapProvider()),
+                            );
+                          },
+                        ),
+                      )
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -226,13 +223,13 @@ class SignInState extends State<SignIn> {
       onPressed: () {
         _handleSignIn().whenComplete(() {
           Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MapProvider()),
-                  );
-                },
+            MaterialPageRoute(
+              builder: (context) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MapProvider()),
+                );
+              },
             ),
           );
         });
@@ -246,7 +243,9 @@ class SignInState extends State<SignIn> {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image(image: AssetImage("assets/images/google_logo.png"), height: 35.0),
+            Image(
+                image: AssetImage("assets/images/google_logo.png"),
+                height: 35.0),
             Padding(
               padding: const EdgeInsets.only(left: 10),
               child: Text(
