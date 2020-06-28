@@ -1,7 +1,9 @@
 import 'package:bike_loca_x/components/login_page.dart';
 import 'package:flutter/material.dart';
+// Own
 import './home.dart';
 import './map-provider.dart';
+import './database.dart';
 
 class WelcomePage extends StatelessWidget {
   @override
@@ -29,6 +31,18 @@ class WelcomePage extends StatelessWidget {
                   children: <Widget>[
                     Expanded(
                       child: RaisedButton(
+                        child: Text('Data'),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Database()),
+                          );
+                        },
+                      ),
+                    ),
+                    SizedBox(width: 25),
+                    Expanded(
+                      child: RaisedButton(
                         child: Text('Maps'),
                         onPressed: () {
                           Navigator.push(
@@ -38,7 +52,11 @@ class WelcomePage extends StatelessWidget {
                           );
                         },
                       ),
-                    ),
+                    )
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
                     Expanded(
                       child: RaisedButton(
                         child: Text('Sign in'),
