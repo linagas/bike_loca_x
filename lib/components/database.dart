@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Database extends StatelessWidget {
+  // Declare database instance by reference
+  final databaseReference = Firestore.instance;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,25 +16,42 @@ class Database extends StatelessWidget {
             body: Center(
                 child: Container(
                     color: Colors.white,
-                    child: ListView(
-                      padding: const EdgeInsets.all(8),
-                      children: <Widget>[
-                        Container(
-                          height: 50,
-                          color: Colors.amber[600],
-                          child: const Center(child: Text('Entry A')),
-                        ),
-                        Container(
-                          height: 50,
-                          color: Colors.amber[500],
-                          child: const Center(child: Text('Entry B')),
-                        ),
-                        Container(
-                          height: 50,
-                          color: Colors.amber[100],
-                          child: const Center(child: Text('Entry C')),
-                        ),
-                      ],
-                    )))));
+                    child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          RaisedButton(
+                              child: Text('Create Record',
+                                  style: new TextStyle(color: Colors.white)),
+                              onPressed: () {
+                                createRecord();
+                              }),
+                          RaisedButton(
+                              child: Text('Update Record',
+                                  style: new TextStyle(color: Colors.white)),
+                              onPressed: () {
+                                updateRecord();
+                              }),
+                        ])))));
+  }
+
+  void createRecord() async {
+    DocumentReference ref =
+        await databaseReference.collection("locations").add({
+      'name': 'From APP',
+      'description': 'New record From app desc',
+      'lat': 0,
+      'lon': 0
+    });
+    print(ref.documentID);
+  }
+
+  void updateRecord() async {
+    await databaseReference.collection("locations").document("1").setData({
+      'name': 'From APP',
+      'description': 'Update record button',
+      'lat': 0,
+      'lon': 0
+    });
   }
 }
