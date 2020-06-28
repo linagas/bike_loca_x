@@ -16,22 +16,48 @@ class Database extends StatelessWidget {
             body: Center(
                 child: Container(
                     color: Colors.white,
-                    child: Row(
+                    child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
-                          RaisedButton(
-                              child: Text('Create Record',
-                                  style: new TextStyle(color: Colors.white)),
-                              onPressed: () {
-                                createRecord();
-                              }),
-                          RaisedButton(
-                              child: Text('Update Record',
-                                  style: new TextStyle(color: Colors.white)),
-                              onPressed: () {
-                                updateRecord();
-                              }),
+                          Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: <Widget>[
+                                RaisedButton(
+                                    child: Text('Create Record',
+                                        style:
+                                            new TextStyle(color: Colors.white)),
+                                    onPressed: () {
+                                      createRecord();
+                                    }),
+                                RaisedButton(
+                                    child: Text('Update Record',
+                                        style:
+                                            new TextStyle(color: Colors.white)),
+                                    onPressed: () {
+                                      updateRecord();
+                                    }),
+                              ]),
+                          Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: <Widget>[
+                                RaisedButton(
+                                    child: Text('Get Records',
+                                        style:
+                                            new TextStyle(color: Colors.white)),
+                                    onPressed: () {
+                                      getRecords();
+                                    }),
+                                RaisedButton(
+                                    child: Text('Delete Record',
+                                        style:
+                                            new TextStyle(color: Colors.white)),
+                                    onPressed: () {
+                                      deleteRecord();
+                                    })
+                              ]),
                         ])))));
   }
 
@@ -53,5 +79,22 @@ class Database extends StatelessWidget {
       'lat': 0,
       'lon': 0
     });
+  }
+
+  void getRecords() {
+    databaseReference
+        .collection("locations")
+        .getDocuments()
+        .then((QuerySnapshot snapshot) {
+      snapshot.documents.forEach((f) => print('${f.data}}'));
+    });
+  }
+
+  void deleteRecord() {
+    try {
+      databaseReference.collection('locations').document('1').delete();
+    } catch (e) {
+      print(e.toString());
+    }
   }
 }
