@@ -1,3 +1,4 @@
+import 'package:bike_loca_x/components/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocation/geolocation.dart';
@@ -41,6 +42,7 @@ class _MapProviderState extends State<MapProvider> {
             zoom: 16.0,
           ),
         ),
+        drawer: MyDrawer(),
       ),
     );
   }
