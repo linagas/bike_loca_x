@@ -81,9 +81,9 @@ class SignInState extends State<SignIn> {
               padding: const EdgeInsets.all(36.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text("Welcome to BikeLocation APP"),
+                  Text("Save as much as you can and be amazed"),
                   SizedBox(width: 25),
                   SizedBox(
                     child: Image.asset(
@@ -93,50 +93,11 @@ class SignInState extends State<SignIn> {
                   ),
                   SizedBox(width: 25),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       _signInButton(),
                       SizedBox(width: 25),
-                      Expanded(
-                        child: RaisedButton(
-                          child: Text('Sign up'),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => MapProvider()),
-                            );
-                          },
-                        ),
-                      )
-                    ],
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: RaisedButton(
-                          child: Text('Data'),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Database()),
-                            );
-                          },
-                        ),
-                      ),
-                      SizedBox(width: 25),
-                      Expanded(
-                        child: RaisedButton(
-                          child: Text('Maps'),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => MapProvider()),
-                            );
-                          },
-                        ),
-                      )
                     ],
                   ),
                 ],
