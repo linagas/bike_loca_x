@@ -9,7 +9,7 @@ GoogleSignIn _googleSignIn = GoogleSignIn(
 
 
 class AuthServices {
-  Future<void> _handleSignIn() async {
+  Future<void> handleSignIn() async {
     try {
       await _googleSignIn.signIn();
     } catch (error) {

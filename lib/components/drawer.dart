@@ -15,7 +15,8 @@ class MyDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            child: Text('Bike Lovers - Menu'),
+            child: 
+            Text('Bike Lovers - Menu'),
             decoration: BoxDecoration(
               color: Colors.grey[400],
             ),

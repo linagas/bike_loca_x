@@ -18,6 +18,7 @@ class _MapProviderState extends State<MapProvider> {
 
   @override
   Widget build(BuildContext context) {
+    print(context);
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
