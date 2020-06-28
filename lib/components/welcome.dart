@@ -1,6 +1,7 @@
 import 'package:bike_loca_x/components/login_page.dart';
 import 'package:flutter/material.dart';
 import './home.dart';
+import './map-provider.dart';
 
 class WelcomePage extends StatelessWidget {
   @override
@@ -26,18 +27,33 @@ class WelcomePage extends StatelessWidget {
                 SizedBox(width: 25),
                 Row(
                   children: <Widget>[
-                    Expanded(child: RaisedButton(
+                    Expanded(
+                      child: RaisedButton(
+                        child: Text('Maps'),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MapProvider()),
+                          );
+                        },
+                      ),
+                    ),
+                    Expanded(
+                      child: RaisedButton(
                         child: Text('Sign in'),
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => LoginPage()),
+                            MaterialPageRoute(
+                                builder: (context) => LoginPage()),
                           );
                         },
                       ),
                     ),
                     SizedBox(width: 25),
-                    Expanded(child: RaisedButton(
+                    Expanded(
+                      child: RaisedButton(
                         child: Text('Sign up'),
                         onPressed: () {
                           Navigator.push(
@@ -49,7 +65,6 @@ class WelcomePage extends StatelessWidget {
                     )
                   ],
                 ),
-                
               ],
             ),
           ),
