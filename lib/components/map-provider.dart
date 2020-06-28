@@ -1,6 +1,7 @@
 import 'package:bike_loca_x/components/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:geolocation/geolocation.dart';
 
 class MapProvider extends StatefulWidget {
   @override
@@ -9,11 +10,19 @@ class MapProvider extends StatefulWidget {
 
 class _MapProviderState extends State<MapProvider> {
   GoogleMapController mapController;
+  LatLng _currentPosition;
+  BitmapDescriptor pinLocationIcon;
+  Set<Marker> _markers = {};
 
-  final LatLng _center = const LatLng(-33.4539101, -70.6335762);
-
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
+  @override
+  void initState() {
+    super.initState();
+    checkGps().then((latLng) => {
+          setState(() {
+            _currentPosition = latLng;
+          }),
+          addMarker(),
+        });
   }
 
   @override
@@ -21,18 +30,49 @@ class _MapProviderState extends State<MapProvider> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Mapa BikeLoca'),
-          backgroundColor: Colors.green[700],
+          title: Text('BikeLoca'),
+          backgroundColor: Colors.cyan[300],
         ),
         body: GoogleMap(
+          onCameraMove: _onCameraMove,
           onMapCreated: _onMapCreated,
+          markers: _markers,
           initialCameraPosition: CameraPosition(
-            target: _center,
-            zoom: 11.0,
+            target: _currentPosition,
+            zoom: 16.0,
           ),
         ),
         drawer: MyDrawer(),
       ),
     );
+  }
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
+
+  void _onCameraMove(CameraPosition position) {
+    _currentPosition = position.target;
+  }
+
+  checkGps() async {
+    LocationResult result = await Geolocation.lastKnownLocation();
+    if (result.isSuccessful) {
+      return LatLng(result.location.latitude, result.location.longitude);
+    }
+  }
+
+  void addMarker() async {
+    final pinLocationIcon = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration(size: Size(106, 106)),
+        'assets/images/bike-icon.png');
+    Marker resultMarker = Marker(
+      markerId: MarkerId("<user-id>"),
+      position: _currentPosition,
+      icon: pinLocationIcon,
+    );
+    setState(() {
+      _markers.add(resultMarker);
+    });
   }
 }
