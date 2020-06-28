@@ -40,6 +40,7 @@ dev_dependencies:
 
   firebase_auth: ^0.16.0
   google_sign_in: ^4.4.4
+  get_it: ^4.0.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
