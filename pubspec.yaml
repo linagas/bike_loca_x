@@ -26,7 +26,7 @@ dependencies:
 
   # Add GoogleMaps
   google_maps_flutter: ^0.5.27+3
-  
+
   geolocation: ^1.1.2
 
   # Firestore database
@@ -61,8 +61,7 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
-    - assets/images/logo.jpg
-    - assets/images/bike-icon.png
+    - assets/images/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see
