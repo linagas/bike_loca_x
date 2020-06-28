@@ -9,6 +9,7 @@ import 'dart:async';
 import 'dart:convert' show json;
 
 import 'package:bike_loca_x/components/home.dart';
+import 'package:bike_loca_x/components/welcome.dart';
 import "package:http/http.dart" as http;
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -175,7 +176,7 @@ class SignInState extends State<SignIn> {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => SignIn()),
+                              MaterialPageRoute(builder: (context) => MapProvider()),
                             );
                           },
                         ),
