@@ -53,13 +53,9 @@ class _MapProviderState extends State<MapProvider> {
               ),
         ),
         drawer: MyDrawer(),
-        floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {
-            // Add your onPressed code here!
-          },
-          label: Text(''),
-          icon: Icon(Icons.plus_one),
-          backgroundColor: Colors.pink,
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          backgroundColor: Colors.cyan[300],
         ),
       ),
     );
