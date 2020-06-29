@@ -16,16 +16,6 @@ GoogleSignIn _googleSignIn = GoogleSignIn(
   ],
 );
 
-class App extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Welcome to BikeLocation APP',
-      home: SignIn(),
-    );
-  }
-}
-
 class SignIn extends StatefulWidget {
   @override
   State createState() => SignInState();
@@ -106,20 +96,13 @@ class SignInState extends State<SignIn> {
 
   Widget _signInButton() {
     return OutlineButton(
-      splashColor: Colors.grey,
       onPressed: () {
         getSignIn().whenComplete(() {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              // ignore: missing_return
-              builder: (context) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_currentUser) => MapProvider()),
-                );
-              },
-            ),
+          Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_currentUser) => MapProvider()),
           );
+          return Container();
         });
       },
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
