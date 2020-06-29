@@ -51,6 +51,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "861495086198-72i3nckrat0l8r22pqj86ldqjsuesj0k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bike_loca_x",
+            "certificate_hash": "be3638b7490f121e1c604882749dc26e03d6affb"
+          }
+        },
+        {
           "client_id": "861495086198-o9c0bji6rdc04vjcj1ah8j4k9pcfmtvg.apps.googleusercontent.com",
           "client_type": 3
         }
