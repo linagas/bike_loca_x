@@ -34,14 +34,18 @@ class _MapProviderState extends State<MapProvider> {
           title: Text('BikeLoca'),
           backgroundColor: Colors.cyan[300],
         ),
-        body: GoogleMap(
-          onCameraMove: _onCameraMove,
-          onMapCreated: _onMapCreated,
-          markers: _markers,
-          initialCameraPosition: CameraPosition(
-            target: _currentPosition,
-            zoom: 16.0,
-          ),
+        body: _currentPosition == null
+          ? Container()
+            : GoogleMap(
+              myLocationButtonEnabled: true,
+              myLocationEnabled: true,
+              onCameraMove: _onCameraMove,
+              onMapCreated: _onMapCreated,
+              markers: _markers,
+              initialCameraPosition: CameraPosition(
+                target: _currentPosition,
+                zoom: 16.0,
+              ),
         ),
         drawer: MyDrawer(),
         floatingActionButton: FloatingActionButton.extended(

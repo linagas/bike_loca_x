@@ -4,15 +4,10 @@
 
 // ignore_for_file: public_member_api_docs
 
-import 'dart:async';
-import 'dart:convert' show json;
-
 import 'package:bike_loca_x/services/authServices.dart';
-import "package:http/http.dart" as http;
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import './map-provider.dart';
-import './database.dart';
 
 GoogleSignIn _googleSignIn = GoogleSignIn(
   scopes: <String>[
@@ -53,7 +48,7 @@ class SignInState extends State<SignIn> {
         print(_currentUser);
       }
     });
-    //_googleSignIn.signInSilently();
+    _googleSignIn.signInSilently();
   }
   
   Widget _buildBody() {
